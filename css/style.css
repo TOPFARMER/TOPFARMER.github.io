@@ -239,11 +239,10 @@ a:hover {
   padding-right: 1em;
 }
 .footer {
-  height: 4rem;
   width: 100%;
   text-align: center;
-  line-height: 4rem;
   padding-top: 2em;
+  margin: 0px;
 }
 @charset "utf-8";
 
@@ -485,6 +484,10 @@ header label {
 }
 .copyright {
   font-size: 14px;
+}
+.gt-container {
+  max-width: 780px;
+  margin: auto;
 }
 .pagination {
   display: flex;
