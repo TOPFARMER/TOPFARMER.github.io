@@ -115,6 +115,28 @@
     </article>
 </div>
 
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
+<script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: 'b1c689c3d90db413c77a',
+        clientSecret: '9fe46b7a8f9e559574146d6ab8e95b61f2eb2467',
+        repo: 'https://github.com/TOPFARMER/TOPFARMER.github.io',
+        owner: 'Topfarmer',
+        admin: 'Topfarmer',
+        id: md5(location.pathname),      
+        labels: 'Gitalk'.split(',').filter(l => l),
+        perPage: 10,
+        pagerDirection: 'last',
+        createIssueManually: true,
+        distractionFreeMode: false
+      })
+      gitalk.render('gitalk-container')
+</script>
+
         </div>
         <footer id="footer" class="footer">
     <div class="copyright">
