@@ -99,6 +99,6 @@ theme: Chic
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:TOPFARMER/TOPFARMER.github.io.git
+  repo: https://github.com/TOPFARMER/TOPFARMER.github.io
   branch: master
 
