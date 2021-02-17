@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Wenhao Deng">
+
+
+
+
+
+<title>Windows10-下安装-Mit-scheme-流程-2021 | 叉烧记录</title>
+
+
+
+    <link rel="icon" href="/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">叉烧记录</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about/me.html">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">叉烧记录</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about/me.html">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Windows10-下安装-Mit-scheme-流程-2021</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Wenhao Deng</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">二月 17, 2021&nbsp;&nbsp;21:46:53</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>本文记录一下在2021年，windows 10系统如何通过 WSL(Windows Subsystem for Linux) 安装Mit-scheme。</p>
+<p>安装前置条件：</p>
+<ul>
+<li>安装WSL2 (Ubuntu发行版)</li>
+<li>安装Visual Studio Code与它的Remote-WSL插件</li>
+</ul>
+<h3 id="1-安装Mit-scheme"><a href="#1-安装Mit-scheme" class="headerlink" title="1. 安装Mit-scheme"></a>1. 安装Mit-scheme</h3><p>因为Mit-scheme的<a target="_blank" rel="noopener" href="https://www.gnu.org/software/mit-scheme/">官方页面</a>已经明确指出不再支持windows系统，</p>
+<blockquote>
+<p>We no longer support OS/2, DOS, or Windows, though it’s possible that this software could be used on Windows Subsystem for Linux (we haven’t tried).</p>
+</blockquote>
+<p>所以我们采取在linux子系统中安装的手段。</p>
+<p>打开安装好的 Ubuntu 子系统，<em>bash</em> 内输入:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install mit-scheme</span><br></pre></td></tr></table></figure>
+<p>安装完成后，<em>bash</em> 内输入<code>mit-scheme</code>可以打开 scheme 的 REPL (Read Eval Print Loop: Interactive Interpretor)。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MIT&#x2F;GNU Scheme running under GNU&#x2F;Linux</span><br><span class="line">Type &#96;^C&#39; (control-C) followed by &#96;H&#39; to obtain information about interrupts.</span><br><span class="line"></span><br><span class="line">Copyright (C) 2019 Massachusetts Institute of Technology</span><br><span class="line">This is free software; see the source for copying conditions. There is NO warranty; not even for MERCHANTABILITY or</span><br><span class="line">FITNESS FOR A PARTICULAR PURPOSE.</span><br><span class="line"></span><br><span class="line">Image saved on Thursday September 5, 2019 at 11:51:46 AM</span><br><span class="line">  Release 10.1.10 || Microcode 15.3 || Runtime 15.7 || SF 4.41 || LIAR&#x2F;x86-64 4.118</span><br><span class="line"></span><br><span class="line">1 ]&#x3D;&gt;</span><br></pre></td></tr></table></figure>
+<p>按 <em>ctrl + D</em> 可退出 REPL。</p>
+<h3 id="2-优化-REPL-输入环境"><a href="#2-优化-REPL-输入环境" class="headerlink" title="2. 优化 REPL 输入环境"></a>2. 优化 REPL 输入环境</h3><p>此时安装好的 REPL 并没有自动补全与命令历史，使用体验比较差。StackOverflow上有人给出了安装 <em>readline wrapper (rlwrap)</em> 工具的<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/11908746/mit-scheme-repl-with-command-line-history-and-tab-completion">解决方案</a>。<br>接下来通过安装 <em>rlwrap</em> 工具对 <em>scheme</em> 的 REPL 进行功能补充。</p>
+<p>先下载工具的配置文件 <em>mit_scheme_bindings.txt</em> 到HOME目录，<em>bash</em> 中输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">wget https://gist.githubusercontent.com/bobbyno/3325982/raw/fc0208d287e56adc12b4c76114fcd21a107082ad/mit_scheme_bindings.txt</span><br></pre></td></tr></table></figure>
+<p>备用防挂链接：<a href="/2021/02/17/Windows10-%E4%B8%8B%E5%AE%89%E8%A3%85-Mit-scheme-%E6%B5%81%E7%A8%8B-2021/mit_scheme_bindings.txt" title="mit_scheme_bindings.txt">mit_scheme_bindings.txt</a></p>
+<p>接着安装 <em>rlwrap</em> ：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install rlwrap</span><br></pre></td></tr></table></figure>
+<p>安装完成后,编辑 <em>~/.bashrc</em> 文件 (之前最好安装 vscode 与 remote-wsl 插件)：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">code ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>没装用 vscode 可以使用 vim：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>文件中插入一行：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> myscheme=<span class="string">&#x27;rlwrap -r -c -f &quot;$HOME&quot;/mit_scheme_bindings.txt scheme&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>保存后应用配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<h3 id="3-学习-scheme-的一些网站"><a href="#3-学习-scheme-的一些网站" class="headerlink" title="3. 学习 scheme 的一些网站"></a>3. 学习 scheme 的一些网站</h3><ol>
+<li><a target="_blank" rel="noopener" href="http://www.shido.info/lisp/idx_scm_e.html">Yet Another Scheme Tutorial</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.gnu.org/software/guile/learn/">Learn page of GNU guile</a></li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Wenhao Deng</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://topfarmer.github.io/2021/02/17/Windows10-%E4%B8%8B%E5%AE%89%E8%A3%85-Mit-scheme-%E6%B5%81%E7%A8%8B-2021/">https://topfarmer.github.io/2021/02/17/Windows10-%E4%B8%8B%E5%AE%89%E8%A3%85-Mit-scheme-%E6%B5%81%E7%A8%8B-2021/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/scheme/"># scheme</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
+<script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: 'b1c689c3d90db413c77a',
+        clientSecret: '9fe46b7a8f9e559574146d6ab8e95b61f2eb2467',
+        repo: 'TOPFARMER.github.io',
+        owner: 'TOPFARMER',
+        admin: 'TOPFARMER',
+        id: md5(location.pathname),      
+        labels: 'Gitalk'.split(',').filter(l => l),
+        perPage: 10,
+        pagerDirection: 'last',
+        createIssueManually: true,
+        distractionFreeMode: false
+      })
+      gitalk.render('gitalk-container')
+</script>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+           </span> <br>
+        <span>  © Wenhao Deng | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

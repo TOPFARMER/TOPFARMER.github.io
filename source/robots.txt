@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /archives
+
+Disallow: /fonts/
+Disallow: /image/
+
+
+Sitemap: https://topfarmer.github.io/sitemap.xml
+Sitemap: https://topfarmer.github.io/baidusitemap.xml
