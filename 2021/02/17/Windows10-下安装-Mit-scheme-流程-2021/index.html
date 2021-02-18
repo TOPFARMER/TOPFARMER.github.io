@@ -217,10 +217,10 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">code ~/.bashrc</span><br></pre></td></tr></table></figure>
 <p>没装用 vscode 可以使用 vim：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>文件中插入一行：</p>
+<p>文件中插入一行(此处我将命令别名设为 <em>myscheme</em> )：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> myscheme=<span class="string">&#x27;rlwrap -r -c -f &quot;$HOME&quot;/mit_scheme_bindings.txt scheme&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>保存后应用配置：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>保存后应用配置，就可以在 bash 中打开 REPL 了：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">myscheme</span><br></pre></td></tr></table></figure>
 <h3 id="3-学习-scheme-的一些网站"><a href="#3-学习-scheme-的一些网站" class="headerlink" title="3. 学习 scheme 的一些网站"></a>3. 学习 scheme 的一些网站</h3><ol>
 <li><a target="_blank" rel="noopener" href="http://www.shido.info/lisp/idx_scm_e.html">Yet Another Scheme Tutorial</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.gnu.org/software/guile/learn/">Learn page of GNU guile</a></li>
